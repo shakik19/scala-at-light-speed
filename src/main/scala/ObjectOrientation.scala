@@ -1,6 +1,9 @@
 package com.shakik
 
 import ObjectOrientation.Square.armCount
+import java.io.FileNotFoundException
+import java.io.IOException
+import java.io.FileReader
 
 /*
 SINGLETON
@@ -94,8 +97,45 @@ object ObjectOrientation extends App{
     Recall Static methods -> Everything inside Object companions are static
     */
 
+  /*
+  CASE CLASSES -> lightweight data structure with some boilerplate
+  auto generates the following,
+    - sensible equals and hashcode
+    - quick serialization (Beneficial for wire transfer in distributed systems)
+    - default companion with apply -> Can be initialized without the keyword *new
+    - pattern matching
+  */
 
 
+  //  EXCEPTIONS
+  var text: FileReader = null
+  try
+    text = new FileReader("filename")
+  catch
+    case fnf: FileNotFoundException => fnf.printStackTrace()
+    case ioe: IOException => ioe.printStackTrace()
+  finally
+    println("Came to the 'finally' clause.")
+
+
+  //   GENERICS
+  // Just like JAVA! no exception
+  abstract class MyList[T]:
+    def head: T
+    def tail: MyList[T]
+
+
+  /*
+  IMPORTANT POINTS
+  #1: In Scala we usually work with IMMUTABLE values/objects
+  #2: Any modification to an object should return a new object
+  #3: Very Close to ideal Object Oriented
+
+  BENEFITS:
+  #1: Works miracles in multithreaded/distributed env (Speed ups the development)
+  #2: helps making sense (Reasoning about)
+  #3:
+  */
 
 }
 
